@@ -48,6 +48,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="operation"
               type="text"
               name="operation"
@@ -60,6 +61,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="operationLost"
               type="text"
               name="operationLost"
@@ -72,6 +74,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="drive"
               type="text"
               name="drive"
@@ -84,6 +87,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="driveLost"
               type="text"
               name="driveLost"
@@ -96,6 +100,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="duty"
               type="text"
               name="duty"
@@ -108,6 +113,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="weekend"
               type="text"
               name="weekend"
@@ -120,6 +126,7 @@ export default function TableInputs() {
           <div className="input_wrapper">
             <input
               className="input_value"
+              inputMode="decimal"
               id="bonus"
               type="text"
               name="bonus"

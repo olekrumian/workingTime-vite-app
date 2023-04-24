@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 export default function DomInputs() {
+  //!Time
   const getFullTime = () => {
     let today = new Date()
 
@@ -17,6 +19,34 @@ export default function DomInputs() {
 
     return fullDate
   }
+
+  const [tableData, setTableData] = useState([])
+  const [inputValues, setInputValues] = useState({
+    miejsce: '',
+    kilometry: '',
+    date: getFullTime(),
+    iOperacji: '',
+    uwagi: '',
+    id: '',
+  })
+
+  const place = inputValues.miejsce.value
+  const km = inputValues.kilometry.value
+  const date = inputValues.date
+  const operation = inputValues.iOperacji.value
+  const comments = inputValues.uwagi.value
+  const id = inputValues.id.value
+
+  const handleInputChange = (e) => {
+    console.log(e)
+  }
+
+  // const addTableRow = (e) => {
+  //   e.preventDefault()
+  //   const newRow = { id: Date.now(), ...inputValues }
+  //   const updatedTableData = [...tableData, newRow]
+  //   setTableData(updatedTableData)
+  // }
 
   return (
     <>
@@ -46,8 +76,8 @@ export default function DomInputs() {
             name="miejsce"
             id="miejsce"
             placeholder="Miejsce"
-            // value={row.miejsce}
-            // onChange={handleChange}
+            value={place}
+            onChange={handleInputChange}
           />
           <input
             type="number"
@@ -57,16 +87,16 @@ export default function DomInputs() {
             name="kilometry"
             id="kilometry"
             placeholder="Kilometry"
-            // value={row.kilometry}
-            // onChange={handleChange}
+            value={km}
+            onChange={handleInputChange}
           />
           <input
             id="date"
             className="date"
             name="date"
             inputMode="decimal"
-            defaultValue={getFullTime()}
-            // value={row.getFullTime}
+            value={date}
+            onChange={handleInputChange}
           />
           <input
             type="number"
@@ -75,8 +105,8 @@ export default function DomInputs() {
             name="iOperacji"
             id="operacji"
             placeholder="Ilosc operacji"
-            // value={row.iOperacji}
-            // onChange={handleChange}
+            value={operation}
+            onChange={handleInputChange}
           />
           <datalist id="uwagi">
             <option value="utracone" />
@@ -88,15 +118,15 @@ export default function DomInputs() {
             name="uwagi"
             list="uwagi"
             placeholder="Uwagi"
-            // value={row.uwagi}
-            // onChange={handleChange}
+            value={comments}
+            onChange={handleInputChange}
           />
           <div className="button_wrapper">
             <button
               className="ready_btn"
               type="submit"
               onClick={() => {
-                //TODO add row to table
+                addTableRow()
               }}
             >
               Gotowe
@@ -117,23 +147,24 @@ export default function DomInputs() {
               </tr>
             </thead>
             <tbody className="tbody">
-              {/* {table.map((row, index) => {
-                const { id, miejsce, kilometry, data, iOperacji, uwagi } = row
+              {tableData.map((row, index) => {
+                const { id, miejsce, kilometry, date, iOperacji, uwagi } = row
                 return (
                   <tr className="table_row" key={index} id={id}>
                     <td>{miejsce}</td>
                     <td>{kilometry}</td>
-                    <td>{data}</td>
+                    <td>{date}</td>
                     <td>{iOperacji}</td>
                     <td>{uwagi}</td>
                     <td>
                       <button className="usun">
-                        X //TODO add remove icon for each element
+                        <span aria-hidden="true">×</span>
+                        <span className="sr-only">Usun</span>
                       </button>
                     </td>
                   </tr>
                 )
-              })} */}
+              })}
             </tbody>
           </table>
         </div>
