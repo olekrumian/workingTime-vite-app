@@ -32,7 +32,6 @@ export default function TableInputs() {
 
     return arrSum.reduce((total, index) => total + index)
   }
-  console.log(totalSum())
 
   const handleChange = (e) => {
     const name = e.target.name

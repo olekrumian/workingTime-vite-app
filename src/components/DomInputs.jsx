@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { FiTrash2 } from 'react-icons/fi'
 export default function DomInputs() {
-  //!Time
+  //*Time
   const getFullTime = () => {
     let today = new Date()
 
@@ -63,7 +64,9 @@ export default function DomInputs() {
   }
 
   const removeRow = (id) => {
-    setTableData(tableData.filter((item) => item.id !== id))
+    if (window.confirm('Potwierdzić')) {
+      setTableData(tableData.filter((item) => item.id !== id))
+    }
   }
 
   useEffect(() => {
@@ -180,7 +183,7 @@ export default function DomInputs() {
                           removeRow(id)
                         }}
                       >
-                        <span aria-hidden="true">×</span>
+                        <FiTrash2 />
                       </button>
                     </td>
                   </tr>
@@ -193,7 +196,10 @@ export default function DomInputs() {
           <button
             className="remove_btn"
             onClick={() => {
-              //TODO remove all rows
+              if (window.confirm('Potwierdzić')) {
+                return setTableData([])
+              }
+              return window.location.reload()
             }}
           >
             Oczyszć
