@@ -9,9 +9,7 @@ export default function Main() {
   return (
     <>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div style={{ touchAction: 'pan-y' }}>
-        {activeTab === 'dom' ? <DomInputs /> : <TableInputs />}
-      </div>
+      <div>{activeTab === 'dom' ? <DomInputs /> : <TableInputs />}</div>
     </>
   )
 }

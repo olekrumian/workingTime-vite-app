@@ -20,33 +20,55 @@ export default function DomInputs() {
     return fullDate
   }
 
-  const [tableData, setTableData] = useState([])
-  const [inputValues, setInputValues] = useState({
-    miejsce: '',
-    kilometry: '',
-    date: getFullTime(),
-    iOperacji: '',
-    uwagi: '',
-    id: '',
-  })
-
-  const place = inputValues.miejsce.value
-  const km = inputValues.kilometry.value
-  const date = inputValues.date
-  const operation = inputValues.iOperacji.value
-  const comments = inputValues.uwagi.value
-  const id = inputValues.id.value
-
-  const handleInputChange = (e) => {
-    console.log(e)
+  const localStorageSet = (name, arr) => {
+    localStorage.setItem(name, JSON.stringify(arr))
   }
 
-  // const addTableRow = (e) => {
-  //   e.preventDefault()
-  //   const newRow = { id: Date.now(), ...inputValues }
-  //   const updatedTableData = [...tableData, newRow]
-  //   setTableData(updatedTableData)
-  // }
+  function getLocalStorage() {
+    return localStorage.getItem('tableData')
+      ? JSON.parse(localStorage.getItem('tableData'))
+      : []
+  }
+
+  const [tableData, setTableData] = useState(getLocalStorage())
+  const [inputValues, setInputValues] = useState({
+    place: '',
+    km: '',
+    date: getFullTime(),
+    operation: '',
+    comments: '',
+  })
+
+  const handleInputChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    setInputValues({ ...inputValues, [name]: value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (inputValues.place && inputValues.km) {
+      const newRow = { ...inputValues, id: new Date().getTime().toString() }
+      setTableData([...tableData, newRow])
+      localStorage.setItem('tableData', JSON.stringify(newRow))
+      setInputValues({
+        place: '',
+        km: '',
+        date: getFullTime(),
+        operation: '',
+        comments: '',
+        id: '',
+      })
+    }
+  }
+
+  const removeRow = (id) => {
+    setTableData(tableData.filter((item) => item.id !== id))
+  }
+
+  useEffect(() => {
+    localStorageSet('tableData', tableData)
+  }, [tableData])
 
   return (
     <>
@@ -73,10 +95,10 @@ export default function DomInputs() {
             type="text"
             list="miejsce"
             className="miejsce"
-            name="miejsce"
-            id="miejsce"
+            name="place"
+            id="place"
             placeholder="Miejsce"
-            value={place}
+            value={inputValues.place}
             onChange={handleInputChange}
           />
           <input
@@ -84,51 +106,46 @@ export default function DomInputs() {
             inputMode="decimal"
             maxLength={7}
             className="kilometry"
-            name="kilometry"
-            id="kilometry"
+            name="km"
+            id="km"
             placeholder="Kilometry"
-            value={km}
+            value={inputValues.km}
             onChange={handleInputChange}
           />
           <input
-            id="date"
             className="date"
             name="date"
+            id="date"
             inputMode="decimal"
-            value={date}
+            value={inputValues.date}
             onChange={handleInputChange}
           />
           <input
             type="number"
             inputMode="decimal"
             className="operacji"
-            name="iOperacji"
-            id="operacji"
+            name="operation"
+            id="operation"
             placeholder="Ilosc operacji"
-            value={operation}
+            value={inputValues.operation}
             onChange={handleInputChange}
           />
           <datalist id="uwagi">
             <option value="utracone" />
+            <option value="serwis" />
             <option value="brak aut" />
           </datalist>
           <input
             type="textarea"
             className="uwagi"
-            name="uwagi"
-            list="uwagi"
+            name="comments"
+            id="comments"
             placeholder="Uwagi"
-            value={comments}
+            value={inputValues.comments}
             onChange={handleInputChange}
           />
           <div className="button_wrapper">
-            <button
-              className="ready_btn"
-              type="submit"
-              onClick={() => {
-                addTableRow()
-              }}
-            >
+            <button className="ready_btn" type="submit" onClick={handleSubmit}>
               Gotowe
             </button>
           </div>
@@ -147,19 +164,23 @@ export default function DomInputs() {
               </tr>
             </thead>
             <tbody className="tbody">
-              {tableData.map((row, index) => {
-                const { id, miejsce, kilometry, date, iOperacji, uwagi } = row
+              {tableData.map((tr, index) => {
+                const { id, place, km, date, operation, comments } = tr
                 return (
                   <tr className="table_row" key={index} id={id}>
-                    <td>{miejsce}</td>
-                    <td>{kilometry}</td>
+                    <td>{place}</td>
+                    <td>{km}</td>
                     <td>{date}</td>
-                    <td>{iOperacji}</td>
-                    <td>{uwagi}</td>
+                    <td>{operation}</td>
+                    <td>{comments}</td>
                     <td>
-                      <button className="usun">
+                      <button
+                        className="usun"
+                        onClick={() => {
+                          removeRow(id)
+                        }}
+                      >
                         <span aria-hidden="true">×</span>
-                        <span className="sr-only">Usun</span>
                       </button>
                     </td>
                   </tr>
