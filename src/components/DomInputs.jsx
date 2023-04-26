@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react'
 import { FiTrash2 } from 'react-icons/fi'
-export default function DomInputs() {
+
+export default function DomInputs({
+  operationTotal,
+  getLocalStorage,
+  localStorageSet,
+}) {
   //*Time
   const getFullTime = () => {
     let today = new Date()
@@ -21,17 +26,7 @@ export default function DomInputs() {
     return fullDate
   }
 
-  const localStorageSet = (name, arr) => {
-    localStorage.setItem(name, JSON.stringify(arr))
-  }
-
-  function getLocalStorage() {
-    return localStorage.getItem('tableData')
-      ? JSON.parse(localStorage.getItem('tableData'))
-      : []
-  }
-
-  const [tableData, setTableData] = useState(getLocalStorage())
+  const [tableData, setTableData] = useState(getLocalStorage)
   const [inputValues, setInputValues] = useState({
     place: '',
     km: '',
@@ -48,7 +43,7 @@ export default function DomInputs() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (inputValues.place && inputValues.km) {
+    if (inputValues.place && inputValues.km && inputValues.operation) {
       const newRow = { ...inputValues, id: new Date().getTime().toString() }
       setTableData([...tableData, newRow])
       localStorage.setItem('tableData', JSON.stringify(newRow))
@@ -204,7 +199,7 @@ export default function DomInputs() {
           >
             Oczyszć
           </button>
-          <div className="calculate">Operacji: {}</div>
+          <div className="calculate">Operacji: {operationTotal}</div>
         </div>
       </section>
     </>

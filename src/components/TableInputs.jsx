@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
-export default function TableInputs() {
+// eslint-disable-next-line react/prop-types
+export default function TableInputs({ operationTotal }) {
   const [sumTotal, setSumTotal] = useState({
-    operation: '',
+    operation: operationTotal,
     operationLost: '',
     drive: '',
     driveLost: '',
