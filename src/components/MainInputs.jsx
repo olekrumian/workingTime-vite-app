@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react'
 import { FiTrash2 } from 'react-icons/fi'
+import PropTypes from 'prop-types'
+
+DomInputs.propTypes = {
+  operationTotal: PropTypes.number.isRequired,
+  getLocalStorage: PropTypes.func.isRequired,
+  localStorageSet: PropTypes.func.isRequired,
+}
 
 export default function DomInputs({
   operationTotal,
@@ -66,7 +73,7 @@ export default function DomInputs({
 
   useEffect(() => {
     localStorageSet('tableData', tableData)
-  }, [tableData])
+  }, [localStorageSet, tableData])
 
   return (
     <>

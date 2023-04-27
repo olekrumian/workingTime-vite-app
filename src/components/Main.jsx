@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import Tabs from './Tabs.jsx'
-import DomInputs from './DomInputs'
+import MainInputs from './MainInputs.jsx'
 import TableInputs from './TableInputs'
 
 export default function Main() {
   const [activeTab, setActiveTab] = useState('dom')
+  const [operationTotal, setOperationTotal] = useState(0)
 
   const localStorageSet = (name, arr) => {
     localStorage.setItem(name, JSON.stringify(arr))
@@ -16,17 +17,17 @@ export default function Main() {
       : []
   }
 
-  const operationValue = getLocalStorage().map((item) =>
-    parseInt(item.operation)
-  )
-  const operationTotal = operationValue.reduce((a, b) => a + b, 0)
+  // const operationTotal = getLocalStorage().reduce(
+  //   (total, item) => total + parseInt(item.operation),
+  //   0
+  // )
 
   return (
     <>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <div>
         {activeTab === 'dom' ? (
-          <DomInputs
+          <MainInputs
             operationTotal={operationTotal}
             getLocalStorage={getLocalStorage}
             localStorageSet={localStorageSet}

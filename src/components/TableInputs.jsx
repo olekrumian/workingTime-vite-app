@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
+TableInputs.propTypes = {
+  operationTotal: PropTypes.number.isRequired,
+}
+
 export default function TableInputs({ operationTotal }) {
   const [sumTotal, setSumTotal] = useState({
     operation: operationTotal,
