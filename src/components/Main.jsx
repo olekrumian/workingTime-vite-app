@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Tabs from './Tabs.jsx'
-import MainInputs from './MainInputs.jsx'
+import MainInputs from './MainInputs'
 import TableInputs from './TableInputs'
 
 export default function Main() {
@@ -22,6 +22,22 @@ export default function Main() {
   //   0
   // )
 
+  // const operationTotal = () => {
+  //   return getLocalStorage().reduce(
+  //     (total, item) => total + parseInt(item.operation),
+  //     0
+  //   )
+  // }
+
+  useEffect(() => {
+    setOperationTotal(
+      getLocalStorage().reduce(
+        (total, item) => total + parseInt(item.operation),
+        0
+      )
+    )
+  }, [operationTotal])
+
   return (
     <>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -29,6 +45,7 @@ export default function Main() {
         {activeTab === 'dom' ? (
           <MainInputs
             operationTotal={operationTotal}
+            setOperationTotal={setOperationTotal}
             getLocalStorage={getLocalStorage}
             localStorageSet={localStorageSet}
           />

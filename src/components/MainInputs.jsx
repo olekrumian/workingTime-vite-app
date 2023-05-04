@@ -12,6 +12,7 @@ export default function DomInputs({
   operationTotal,
   getLocalStorage,
   localStorageSet,
+  setOperationTotal,
 }) {
   //*Time
   const getFullTime = () => {
@@ -62,6 +63,7 @@ export default function DomInputs({
         comments: '',
         id: '',
       })
+      setOperationTotal(operationTotal + parseInt(inputValues.operation))
     }
   }
 
@@ -73,7 +75,7 @@ export default function DomInputs({
 
   useEffect(() => {
     localStorageSet('tableData', tableData)
-  }, [localStorageSet, tableData])
+  }, [localStorageSet, tableData, operationTotal])
 
   return (
     <>
