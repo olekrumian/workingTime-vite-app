@@ -17,18 +17,6 @@ export default function Main() {
       : []
   }
 
-  // const operationTotal = getLocalStorage().reduce(
-  //   (total, item) => total + parseInt(item.operation),
-  //   0
-  // )
-
-  // const operationTotal = () => {
-  //   return getLocalStorage().reduce(
-  //     (total, item) => total + parseInt(item.operation),
-  //     0
-  //   )
-  // }
-
   useEffect(() => {
     setOperationTotal(
       getLocalStorage().reduce(

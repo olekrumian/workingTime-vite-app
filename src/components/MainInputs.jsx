@@ -6,6 +6,7 @@ DomInputs.propTypes = {
   operationTotal: PropTypes.number.isRequired,
   getLocalStorage: PropTypes.func.isRequired,
   localStorageSet: PropTypes.func.isRequired,
+  setOperationTotal: PropTypes.func.isRequired,
 }
 
 export default function DomInputs({
@@ -42,6 +43,9 @@ export default function DomInputs({
     operation: '',
     comments: '',
   })
+
+  console.log(tableData)
+  // const [premia, setPremia] = useState('Premia')
 
   const handleInputChange = (e) => {
     const name = e.target.name
@@ -185,6 +189,9 @@ export default function DomInputs({
                         className="usun"
                         onClick={() => {
                           removeRow(id)
+                          setOperationTotal(
+                            operationTotal - parseInt(operation)
+                          )
                         }}
                       >
                         <FiTrash2 />
