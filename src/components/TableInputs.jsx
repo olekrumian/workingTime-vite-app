@@ -4,16 +4,17 @@ import PropTypes from 'prop-types'
 TableInputs.propTypes = {
   operationTotal: PropTypes.number.isRequired,
   premia: PropTypes.number.isRequired,
+  weekendy: PropTypes.number.isRequired,
 }
 
-export default function TableInputs({ operationTotal, premia }) {
+export default function TableInputs({ operationTotal, premia, weekendy }) {
   const [sumTotal, setSumTotal] = useState({
-    operation: operationTotal - premia,
+    operation: operationTotal - premia - weekendy,
     operationLost: '',
     drive: '',
     driveLost: '',
     duty: '',
-    weekend: '',
+    weekend: weekendy,
     bonus: premia,
   })
 

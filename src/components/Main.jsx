@@ -7,7 +7,7 @@ export default function Main() {
   const [activeTab, setActiveTab] = useState('dom')
   const [operationTotal, setOperationTotal] = useState(0)
   const [premia, setPremia] = useState(0)
-  const [oLost, setOLost] = useState(0)
+  const [weekendy, setWeekendy] = useState(0)
 
   const localStorageSet = (name, arr) => {
     localStorage.setItem(name, JSON.stringify(arr))
@@ -24,6 +24,13 @@ export default function Main() {
     const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
     return total
   }
+  function sumWeekendOperations() {
+    const items = getLocalStorage().filter(
+      (item) => item.comments === 'Weekendy'
+    )
+    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
+    return total
+  }
 
   useEffect(() => {
     setOperationTotal(
@@ -33,6 +40,7 @@ export default function Main() {
       )
     )
     setPremia(sumPremiaOperations())
+    setWeekendy(sumWeekendOperations())
   }, [operationTotal])
 
   return (
@@ -46,9 +54,14 @@ export default function Main() {
             getLocalStorage={getLocalStorage}
             localStorageSet={localStorageSet}
             premia={premia}
+            weekendy={weekendy}
           />
         ) : (
-          <TableInputs operationTotal={operationTotal} premia={premia} />
+          <TableInputs
+            operationTotal={operationTotal}
+            premia={premia}
+            weekendy={weekendy}
+          />
         )}
       </div>
     </>

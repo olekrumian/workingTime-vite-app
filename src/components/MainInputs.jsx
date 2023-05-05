@@ -8,6 +8,7 @@ DomInputs.propTypes = {
   localStorageSet: PropTypes.func.isRequired,
   setOperationTotal: PropTypes.func.isRequired,
   premia: PropTypes.number.isRequired,
+  weekendy: PropTypes.number.isRequired,
 }
 
 export default function DomInputs({
@@ -16,6 +17,7 @@ export default function DomInputs({
   localStorageSet,
   setOperationTotal,
   premia,
+  weekendy,
 }) {
   //*Time
   const getFullTime = () => {
@@ -56,6 +58,48 @@ export default function DomInputs({
         ...inputValues,
         place: 'Premia',
         comments: 'Premia',
+      })
+    }
+    if (name === 'place' && value.includes('Weekendy')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Weekendy',
+        comments: 'Weekendy',
+      })
+    }
+    if (name === 'place' && value.includes('Dyżur')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Dyżur',
+        comments: 'Dyżur',
+      })
+    }
+    if (name === 'place' && value.includes('Jazda')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Jazda',
+        comments: 'Jazda',
+      })
+    }
+    if (name === 'place' && value.includes('Jazda(Utracone)')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Jazda(Utracone)',
+        comments: 'J(Utracone)',
+      })
+    }
+    if (name === 'place' && value.includes('Operacji(Utracone)')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Operacji(Utracone)',
+        comments: 'O(Utracone)',
+      })
+    }
+    if (name === 'place' && value.includes('Serwis')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Serwis',
+        comments: 'Serwis',
       })
     }
   }
@@ -222,7 +266,9 @@ export default function DomInputs({
           >
             Oczyszć
           </button>
-          <div className="calculate">Operacji: {operationTotal - premia}</div>
+          <div className="calculate">
+            Operacji: {operationTotal - premia - weekendy}
+          </div>
         </div>
       </section>
     </>

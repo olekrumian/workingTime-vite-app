@@ -131,7 +131,7 @@ input {
     height: 15rem;
   }
   .summa_wyplaty {
-    margin: 4.8rem auto 2rem;
+    margin: 2.8rem auto 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,7 +224,7 @@ input {
   }
 
   .table_wrapper {
-    padding: 0 0 5rem 0;
+    padding: 0 0 3rem 0;
   }
   .table {
     margin: 0 auto;
