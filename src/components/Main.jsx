@@ -6,6 +6,7 @@ import TableInputs from './TableInputs'
 export default function Main() {
   const [activeTab, setActiveTab] = useState('dom')
   const [operationTotal, setOperationTotal] = useState(0)
+  const [premia, setPremia] = useState(0)
 
   const localStorageSet = (name, arr) => {
     localStorage.setItem(name, JSON.stringify(arr))
@@ -17,6 +18,12 @@ export default function Main() {
       : []
   }
 
+  function sumPremiaOperations() {
+    const items = getLocalStorage().filter((item) => item.comments === 'Premia')
+    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
+    return total
+  }
+
   useEffect(() => {
     setOperationTotal(
       getLocalStorage().reduce(
@@ -24,6 +31,7 @@ export default function Main() {
         0
       )
     )
+    setPremia(sumPremiaOperations())
   }, [operationTotal])
 
   return (
@@ -36,9 +44,10 @@ export default function Main() {
             setOperationTotal={setOperationTotal}
             getLocalStorage={getLocalStorage}
             localStorageSet={localStorageSet}
+            premia={premia}
           />
         ) : (
-          <TableInputs operationTotal={operationTotal} />
+          <TableInputs operationTotal={operationTotal} premia={premia} />
         )}
       </div>
     </>

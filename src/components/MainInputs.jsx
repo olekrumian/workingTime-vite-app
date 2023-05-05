@@ -7,6 +7,7 @@ DomInputs.propTypes = {
   getLocalStorage: PropTypes.func.isRequired,
   localStorageSet: PropTypes.func.isRequired,
   setOperationTotal: PropTypes.func.isRequired,
+  premia: PropTypes.func.isRequired,
 }
 
 export default function DomInputs({
@@ -14,6 +15,7 @@ export default function DomInputs({
   getLocalStorage,
   localStorageSet,
   setOperationTotal,
+  premia,
 }) {
   //*Time
   const getFullTime = () => {
@@ -43,9 +45,6 @@ export default function DomInputs({
     operation: '',
     comments: '',
   })
-
-  console.log(tableData)
-  // const [premia, setPremia] = useState('Premia')
 
   const handleInputChange = (e) => {
     const name = e.target.name
@@ -215,7 +214,7 @@ export default function DomInputs({
           >
             Oczyszć
           </button>
-          <div className="calculate">Operacji: {operationTotal}</div>
+          <div className="calculate">Operacji: {operationTotal - premia}</div>
         </div>
       </section>
     </>
