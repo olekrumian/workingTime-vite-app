@@ -7,7 +7,7 @@ DomInputs.propTypes = {
   getLocalStorage: PropTypes.func.isRequired,
   localStorageSet: PropTypes.func.isRequired,
   setOperationTotal: PropTypes.func.isRequired,
-  premia: PropTypes.func.isRequired,
+  premia: PropTypes.number.isRequired,
 }
 
 export default function DomInputs({
@@ -50,6 +50,14 @@ export default function DomInputs({
     const name = e.target.name
     const value = e.target.value
     setInputValues({ ...inputValues, [name]: value })
+
+    if (name === 'place' && value.includes('Premia')) {
+      setInputValues({
+        ...inputValues,
+        place: 'Premia',
+        comments: 'Premia',
+      })
+    }
   }
 
   const handleSubmit = (e) => {

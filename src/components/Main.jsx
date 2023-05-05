@@ -7,6 +7,7 @@ export default function Main() {
   const [activeTab, setActiveTab] = useState('dom')
   const [operationTotal, setOperationTotal] = useState(0)
   const [premia, setPremia] = useState(0)
+  const [oLost, setOLost] = useState(0)
 
   const localStorageSet = (name, arr) => {
     localStorage.setItem(name, JSON.stringify(arr))
