@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useDownloadExcel } from 'react-export-table-to-excel'
 import { FiTrash2 } from 'react-icons/fi'
 import PropTypes from 'prop-types'
 
@@ -46,6 +47,15 @@ export default function DomInputs({
 
     return fullDate
   }
+
+  //*Excel
+  const tableRef = useRef(null)
+
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: getFullTime(),
+    sheet: getFullTime(),
+  })
 
   const [tableData, setTableData] = useState(getLocalStorage)
   const [inputValues, setInputValues] = useState({
@@ -218,11 +228,14 @@ export default function DomInputs({
             <button className="ready_btn" type="submit" onClick={handleSubmit}>
               Gotowe
             </button>
+            <button className="exportxls" onClick={onDownload}>
+              Export Excel
+            </button>
           </div>
         </form>
 
         <div className="table_wrapper">
-          <table id="table" className="table">
+          <table id="table" className="table" ref={tableRef}>
             <thead>
               <tr>
                 <th>Miejsce</th>
