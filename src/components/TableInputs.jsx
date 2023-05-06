@@ -69,7 +69,9 @@ export default function TableInputs({
     <>
       <section id="tabs">
         <form action="form_wrapper">
-          <p className="input_title">Operacji</p>
+          <label htmlFor="operation" className="input_title">
+            Operacji
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -82,7 +84,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{operation}</p>
           </div>
-          <p className="input_title">Operacji utracone</p>
+          <label htmlFor="operationLost" className="input_title">
+            Operacji utracone
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -95,7 +99,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{operationLost}</p>
           </div>
-          <p className="input_title">Jazda</p>
+          <label htmlFor="drive" className="input_title">
+            Jazda
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -108,7 +114,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{drive}</p>
           </div>
-          <p className="input_title">Jazda utracone</p>
+          <label htmlFor="driveLost" className="input_title">
+            Jazda utracone
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -121,7 +129,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{driveLost}</p>
           </div>
-          <p className="input_title">Dyżur</p>
+          <label htmlFor="duty" className="input_title">
+            Dyżur
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -134,7 +144,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{duty}</p>
           </div>
-          <p className="input_title">Weekendy</p>
+          <label htmlFor="weekend" className="input_title">
+            Weekendy
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
@@ -147,7 +159,9 @@ export default function TableInputs({
             />
             <p className="input_goal">{weekend}</p>
           </div>
-          <p className="input_title">Premia (dni pracy)</p>
+          <label htmlFor="bonus" className="input_title">
+            Premia (dni pracy)
+          </label>
           <div className="input_wrapper">
             <input
               className="input_value"
