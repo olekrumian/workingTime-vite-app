@@ -95,7 +95,22 @@ input {
     line-height: 1.7rem;
     color: var(--noblack);
   }
-
+  input {
+    margin: 1rem 0 0 0;
+    width: 100%;
+    max-width: 95%;
+    padding: 1.8rem 1.6rem;
+    background-color: var(--nowhite-color);
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    border: none;
+    outline: none;
+    color: var(--grey-color);
+  }
+  input[type='datetime-local'] {
+    padding: 0.5rem;
+  }
   .input_wrapper {
     display: flex;
     justify-content: space-between;
@@ -104,13 +119,13 @@ input {
   }
   .input_value {
     margin: 0 0.9rem 0 0;
-    padding: 1.6rem;
+    padding: 1.8rem 1.6rem;
     max-width: 50%;
     width: 100%;
   }
   .input_goal {
     margin: auto;
-    padding: 1.6rem 1.6rem;
+    padding: 1.8rem 1.6rem;
     max-width: 50%;
     width: 100%;
     background-color: var(--nowhite-color);
@@ -148,22 +163,6 @@ input {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-  }
-  input {
-    margin: 1rem 0 0 0;
-    width: 100%;
-    max-width: 95%;
-    padding: 1.6rem 1.6rem;
-    background-color: var(--nowhite-color);
-    border-radius: 0.4rem;
-    font-size: 1.6rem;
-    line-height: 1.9rem;
-    border: none;
-    outline: none;
-    color: var(--grey-color);
-  }
-  input[type='datetime-local'] {
-    padding: 0.5rem;
   }
 
   .button_wrapper {
