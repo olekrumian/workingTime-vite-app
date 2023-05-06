@@ -144,7 +144,7 @@ export default function DomInputs({
     <>
       <section>
         <form className="form_wrapper">
-          <datalist id="place">
+          <datalist id="miejsce">
             <option value="Val" />
             <option value="Zeeb" />
             <option value="C.RO" />
