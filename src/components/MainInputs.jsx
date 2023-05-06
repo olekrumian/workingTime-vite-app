@@ -9,6 +9,10 @@ DomInputs.propTypes = {
   setOperationTotal: PropTypes.func.isRequired,
   premia: PropTypes.number.isRequired,
   weekendy: PropTypes.number.isRequired,
+  driveUtr: PropTypes.number.isRequired,
+  operatLost: PropTypes.number.isRequired,
+  driveTime: PropTypes.number.isRequired,
+  dutySum: PropTypes.number.isRequired,
 }
 
 export default function DomInputs({
@@ -18,6 +22,10 @@ export default function DomInputs({
   setOperationTotal,
   premia,
   weekendy,
+  driveUtr,
+  operatLost,
+  driveTime,
+  dutySum,
 }) {
   //*Time
   const getFullTime = () => {
@@ -267,7 +275,14 @@ export default function DomInputs({
             Oczyszć
           </button>
           <div className="calculate">
-            Operacji: {operationTotal - premia - weekendy}
+            Operacji:{' '}
+            {operationTotal -
+              premia -
+              weekendy -
+              driveUtr -
+              operatLost -
+              driveTime -
+              dutySum}
           </div>
         </div>
       </section>
