@@ -160,7 +160,6 @@ export default function TableInputs({
             />
             <p className="input_goal">{bonus}</p>
           </div>
-          {/* <button className="ready_btn">Policz</button> */}
         </form>
         <div className="summa_wyplaty">
           <p className="wyplata">{totalSum ? `${totalSum()}` : `0`}</p>

@@ -218,6 +218,15 @@ export default function DomInputs({
             <button className="ready_btn" type="submit" onClick={handleSubmit}>
               Gotowe
             </button>
+            <button
+              className="exportxls"
+              onClick={(e) => {
+                e.preventDefault()
+                console.log('done')
+              }}
+            >
+              Export to Excel
+            </button>
           </div>
         </form>
 
