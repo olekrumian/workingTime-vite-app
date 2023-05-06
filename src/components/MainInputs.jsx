@@ -122,6 +122,14 @@ export default function DomInputs({
     }
   }
 
+  const handleTouchStart = (event) => {
+    event.preventDefault()
+  }
+
+  const handleTouchEnd = (event) => {
+    event.preventDefault()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (inputValues.place && inputValues.km && inputValues.operation) {
@@ -180,6 +188,8 @@ export default function DomInputs({
             placeholder="Miejsce"
             value={inputValues.place}
             onChange={handleInputChange}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           />
           <input
             type="number"
