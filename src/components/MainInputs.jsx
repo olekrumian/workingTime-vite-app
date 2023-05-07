@@ -160,6 +160,16 @@ export default function DomInputs({
     <>
       <section>
         <form className="form_wrapper">
+          <input
+            type="text"
+            list="miejsce"
+            className="miejsce"
+            name="place"
+            id="place"
+            placeholder="Miejsce"
+            value={inputValues.place}
+            onChange={handleInputChange}
+          />
           <datalist id="miejsce">
             <option value="Val" />
             <option value="Zeeb" />
@@ -177,16 +187,6 @@ export default function DomInputs({
             <option value="Weekendy" />
             <option value="Premia" />
           </datalist>
-          <input
-            type="text"
-            list="miejsce"
-            className="miejsce"
-            name="place"
-            id="place"
-            placeholder="Miejsce"
-            value={inputValues.place}
-            onChange={handleInputChange}
-          />
           <input
             type="number"
             inputMode="decimal"
