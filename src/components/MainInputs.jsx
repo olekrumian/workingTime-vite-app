@@ -76,7 +76,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Premia',
         comments: 'Premia',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Weekendy')) {
@@ -84,7 +83,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Weekendy',
         comments: 'Weekendy',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Dyżur')) {
@@ -92,7 +90,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Dyżur',
         comments: 'Dyżur',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Jazda')) {
@@ -100,7 +97,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Jazda',
         comments: 'Jazda',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Jazda(Utracone)')) {
@@ -108,7 +104,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Jazda(Utracone)',
         comments: 'J(Utracone)',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Operacji(Utracone)')) {
@@ -116,7 +111,6 @@ export default function DomInputs({
         ...inputValues,
         place: 'Operacji(Utracone)',
         comments: 'O(Utracone)',
-        km: 0,
       })
     }
     if (name === 'place' && value.includes('Serwis')) {
@@ -286,9 +280,9 @@ export default function DomInputs({
             className="remove_btn"
             onClick={() => {
               if (window.confirm('Potwierdzić')) {
-                return setTableData([])
+                setTableData([])
+                setOperationTotal(0)
               }
-              return window.location.reload()
             }}
           >
             Oczyszć
