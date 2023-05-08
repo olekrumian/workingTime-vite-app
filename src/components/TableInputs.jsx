@@ -7,6 +7,7 @@ TableInputs.propTypes = {
   weekendy: PropTypes.number.isRequired,
   driveUtr: PropTypes.number.isRequired,
   operatLost: PropTypes.number.isRequired,
+  sumSerwis: PropTypes.number.isRequired,
   driveTime: PropTypes.number.isRequired,
   dutySum: PropTypes.number.isRequired,
 }
@@ -17,6 +18,7 @@ export default function TableInputs({
   weekendy,
   driveUtr,
   operatLost,
+  sumSerwis,
   driveTime,
   dutySum,
 }) {
@@ -27,12 +29,14 @@ export default function TableInputs({
       weekendy -
       driveUtr -
       operatLost -
+      sumSerwis -
       driveTime -
       dutySum,
     operationLost: operatLost,
     drive: driveTime,
     driveLost: driveUtr,
     duty: dutySum,
+    serwis: sumSerwis,
     weekend: weekendy,
     bonus: premia,
   })
@@ -41,6 +45,7 @@ export default function TableInputs({
   const operationLost = sumTotal.operationLost * 21
   const drive = sumTotal.drive * 42
   const driveLost = sumTotal.driveLost * 21
+  const serwis = sumTotal.serwis * 21
   const duty = sumTotal.duty * 150
   const weekend = sumTotal.weekend * 150
   const bonus = sumTotal.bonus * 100
@@ -51,6 +56,7 @@ export default function TableInputs({
       operationLost,
       drive,
       driveLost,
+      serwis,
       duty,
       weekend,
       bonus,
@@ -128,6 +134,21 @@ export default function TableInputs({
               value={sumTotal.driveLost}
             />
             <p className="input_goal">{driveLost}</p>
+          </div>
+          <label htmlFor="driveLost" className="input_title">
+            Serwis
+          </label>
+          <div className="input_wrapper">
+            <input
+              className="input_value"
+              inputMode="decimal"
+              id="serwis"
+              type="text"
+              name="serwis"
+              onChange={handleChange}
+              value={sumTotal.serwis}
+            />
+            <p className="input_goal">{serwis}</p>
           </div>
           <label htmlFor="duty" className="input_title">
             Dyżur

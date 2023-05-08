@@ -10,6 +10,7 @@ export default function Main() {
   const [weekendy, setWeekendy] = useState(0)
   const [driveUtr, setDriveUtr] = useState(0)
   const [operatLost, setOperatLost] = useState(0)
+  const [sumSerwis, setSumSerwis] = useState(0)
   const [driveTime, setDriveTime] = useState(0)
   const [dutySum, setDutySum] = useState(0)
 
@@ -49,6 +50,12 @@ export default function Main() {
     const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
     return total
   }
+  function sumServis() {
+    const items = getLocalStorage().filter((item) => item.comments === 'Serwis')
+    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
+    return total
+  }
+
   function sumDriveTime() {
     const items = getLocalStorage().filter((item) => item.comments === 'Jazda')
     const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
@@ -71,6 +78,7 @@ export default function Main() {
     setWeekendy(sumWeekendOperations())
     setDriveUtr(sumDriveLostOperations())
     setOperatLost(sumOperationLostOperations())
+    setSumSerwis(sumServis())
     setDriveTime(sumDriveTime())
     setDutySum(sumDuty())
   }, [operationTotal])
@@ -89,6 +97,7 @@ export default function Main() {
             weekendy={weekendy}
             driveUtr={driveUtr}
             operatLost={operatLost}
+            sumSerwis={sumSerwis}
             driveTime={driveTime}
             dutySum={dutySum}
           />
@@ -99,6 +108,7 @@ export default function Main() {
             weekendy={weekendy}
             driveUtr={driveUtr}
             operatLost={operatLost}
+            sumSerwis={sumSerwis}
             driveTime={driveTime}
             dutySum={dutySum}
           />

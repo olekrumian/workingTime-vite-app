@@ -12,6 +12,7 @@ DomInputs.propTypes = {
   weekendy: PropTypes.number.isRequired,
   driveUtr: PropTypes.number.isRequired,
   operatLost: PropTypes.number.isRequired,
+  sumSerwis: PropTypes.number.isRequired,
   driveTime: PropTypes.number.isRequired,
   dutySum: PropTypes.number.isRequired,
 }
@@ -25,6 +26,7 @@ export default function DomInputs({
   weekendy,
   driveUtr,
   operatLost,
+  sumSerwis,
   driveTime,
   dutySum,
 }) {
@@ -294,6 +296,7 @@ export default function DomInputs({
               weekendy -
               driveUtr -
               operatLost -
+              sumSerwis -
               driveTime -
               dutySum}
           </div>
