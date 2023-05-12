@@ -149,6 +149,16 @@ export default function DomInputs({
   }
 
   useEffect(() => {
+    const intervalTime = setInterval(() => {
+      setInputValues({
+        ...inputValues,
+        date: getFullTime(),
+      })
+    }, 1000)
+    return () => clearInterval(intervalTime)
+  }, [inputValues])
+
+  useEffect(() => {
     localStorageSet('tableData', tableData)
   }, [localStorageSet, tableData, operationTotal])
 
