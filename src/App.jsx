@@ -7,7 +7,7 @@ export default function App() {
     const hour = new Date().getHours()
     const body = document.body
 
-    if (hour >= 6 && hour < 21) {
+    if (hour >= 8 && hour < 19) {
       body.classList.add('day-theme')
       body.classList.remove('night-theme')
     } else {

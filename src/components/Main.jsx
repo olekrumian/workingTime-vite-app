@@ -23,48 +23,38 @@ export default function Main() {
       ? JSON.parse(localStorage.getItem('tableData'))
       : []
   }
+  function sumOperationsByComment(comment) {
+    const items = getLocalStorage().filter((item) => item.comments === comment)
+    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
+    return total
+  }
 
   function sumPremiaOperations() {
-    const items = getLocalStorage().filter((item) => item.comments === 'Premia')
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('Premia')
   }
+
   function sumWeekendOperations() {
-    const items = getLocalStorage().filter(
-      (item) => item.comments === 'Weekendy'
-    )
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('Weekendy')
   }
+
   function sumDriveLostOperations() {
-    const items = getLocalStorage().filter(
-      (item) => item.comments === 'J(Utracone)'
-    )
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('J(Utracone)')
   }
+
   function sumOperationLostOperations() {
-    const items = getLocalStorage().filter(
-      (item) => item.comments === 'O(Utracone)'
-    )
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('O(Utracone)')
   }
+
   function sumServis() {
-    const items = getLocalStorage().filter((item) => item.comments === 'Serwis')
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('Serwis')
   }
 
   function sumDriveTime() {
-    const items = getLocalStorage().filter((item) => item.comments === 'Jazda')
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('Jazda')
   }
+
   function sumDuty() {
-    const items = getLocalStorage().filter((item) => item.comments === 'Dyżur')
-    const total = items.reduce((acc, item) => acc + parseInt(item.operation), 0)
-    return total
+    return sumOperationsByComment('Dyżur')
   }
 
   useEffect(() => {
